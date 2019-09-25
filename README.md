@@ -1,8 +1,6 @@
-# Android TV Leanback Support Library sample - Videos by Google
+# # Chariot Media Player using Android TV Leanback Support Library
 
-[![Join the chat at https://gitter.im/googlesamples/androidtv-Leanback](https://badges.gitter.im/googlesamples/androidtv-Leanback.svg)](https://gitter.im/googlesamples/androidtv-Leanback?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-This sample is a Videos By Google app, designed to run on an Android TV device (such as the Nexus Player), which demonstrates how to use the Leanback Support library which enables you to easily develop beautiful Android TV apps with a user-friendly UI that complies with the UX guidelines of Android TV.
+This is a media player app designed to run on an Android TV device, in our case the Nebula Capsule II by Anker. This app is meant to serve as a streaming-free media player with a user-friendly UI that complies with the UX guidelines of Android TV. App content is currently all sourced under Creative Commons license and provided to the app via user input into a Google Spreadsheet. Sheet content is converted into a JSON which the app takes as input along with direct links to all media files. Content is refreshed only when WiFi is suitable and all content is usable.
 
 
 ## Getting Started
@@ -10,66 +8,62 @@ This sample is a Videos By Google app, designed to run on an Android TV device (
 - Clone this repo:
 
 ```sh
-git clone https://github.com/googlesamples/androidtv-Leanback.git
+git clone https://github.com/rawitscher/chariot_media.git
 ```
 
 - Open the project in [Android Studio][studio].
-- Compile and deploy to your Android TV device (such as a Nexus Player).
+- Compile and deploy to your Android TV device.
 
 Need more information about getting started with Android TV? Check the [official docs][getting-started].
 
-## Explore the sample
+## Explore the app
 
-- Choose a layout
+- Home Menu
+  - [Onboard][onboardingfragment] new users (explain new features)
   - Videos grouped by [category][mainfragment] (See BrowseFragment in [screenshots][screenshots])
-  - Freeform [vertical grid][verticalgridfragment] of videos (See Vertical Grid Fragment in [screenshots][screenshots])
-- Customize video cards with a [Card Presenter][cardpresenter] (See Card Views in [screenshots][screenshots])
-- Display in-depth [details][detailsfragment] about your video
-- Play a video
-  - [Playback with ExoPlayer2][playbackfragment]
-  - [Add extra buttons to control playback][videoplayerglue]
-- [Display an error][errorfragment]
-- Make your app globally searchable
-  - Review searchable training [document][searchable]
+  - [Search][searchfragment] within your app
+    - Review searchable training [document][searchable]
      - Creating a [content provider][videoprovider]
      - Defining [searchable.xml][searchable.xml]
      - Receive search intent in [manifest][manifestsearch]
-- [Search][searchfragment] within your app
-- [Onboard][onboardingfragment] new users (explain new features)
+- View a Video
+  - Customize video cards with a [Card Presenter][cardpresenter] (See Card Views in [screenshots][screenshots])
+  - Display in-depth [details][detailsfragment] about your video
+- Play a Video
+  - [Playback with ExoPlayer2][playbackfragment]
+  - [Add extra buttons to control playback][videoplayerglue]
+- [Display an error][errorfragment]
 - Customize [preference and settings][settingsfragment]
-- Add a wizard with [guided steps][guidedstep]
 
-[screenshots]: https://github.com/googlesamples/androidtv-Leanback#screenshots
 
-[manifestsearch]: https://github.com/googlesamples/androidtv-Leanback/blob/master/app/src/main/AndroidManifest.xml#L79
+[onboardingfragment]: https://github.com/rawitscher/chariot_media/blob/master/app/src/main/java/com/example/android/tvleanback/ui/OnboardingFragment.java
 
-[searchfragment]: https://github.com/googlesamples/androidtv-Leanback/blob/master/app/src/main/java/com/example/android/tvleanback/ui/SearchFragment.java
+[mainfragment]: https://github.com/rawitscher/chariot_media/blob/master/app/src/main/java/com/example/android/tvleanback/ui/MainFragment.java
 
-[cardpresenter]: https://github.com/googlesamples/androidtv-Leanback/blob/master/app/src/main/java/com/example/android/tvleanback/presenter/CardPresenter.java
+[screenshots]: https://github.com/rawitscher/chariot_media#screenshots
 
-[searchable.xml]: https://github.com/googlesamples/androidtv-Leanback/blob/master/app/src/main/res/xml/searchable.xml
+[searchfragment]: https://github.com/rawitscher/chariot_media/blob/master/app/src/main/java/com/example/android/tvleanback/ui/SearchFragment.java
 
 [searchable]: https://developer.android.com/training/tv/discovery/searchable.html
 
-[videoprovider]: https://github.com/googlesamples/androidtv-Leanback/blob/master/app/src/main/java/com/example/android/tvleanback/data/VideoProvider.java
+[videoprovider]: https://github.com/rawitscher/chariot_media/blob/master/app/src/main/java/com/example/android/tvleanback/data/VideoProvider.java
 
-[errorfragment]: https://github.com/googlesamples/androidtv-Leanback/blob/master/app/src/main/java/com/example/android/tvleanback/ui/BrowseErrorFragment.java
+[searchable.xml]: https://github.com/rawitscher/chariot_media/blob/master/app/src/main/res/xml/searchable.xml
 
-[mainfragment]: https://github.com/googlesamples/androidtv-Leanback/blob/master/app/src/main/java/com/example/android/tvleanback/ui/MainFragment.java
+[manifestsearch]: https://github.com/rawitscher/chariot_media/blob/master/app/src/main/AndroidManifest.xml#L79
 
-[detailsfragment]: https://github.com/googlesamples/androidtv-Leanback/blob/master/app/src/main/java/com/example/android/tvleanback/ui/VideoDetailsFragment.java
+[cardpresenter]: https://github.com/rawitscher/chariot_media/blob/master/app/src/main/java/com/example/android/tvleanback/presenter/CardPresenter.java
 
-[verticalgridfragment]: https://github.com/googlesamples/androidtv-Leanback/blob/master/app/src/main/java/com/example/android/tvleanback/ui/VerticalGridFragment.java
+[detailsfragment]: https://github.com/rawitscher/chariot_media/blob/master/app/src/main/java/com/example/android/tvleanback/ui/VideoDetailsFragment.java
 
-[guidedstep]: https://github.com/googlesamples/androidtv-Leanback/blob/master/app/src/main/java/com/example/android/tvleanback/ui/GuidedStepActivity.java
+[playbackfragment]: https://github.com/rawitscher/chariot_media/blob/master/app/src/main/java/com/example/android/tvleanback/ui/PlaybackFragment.java
 
-[onboardingfragment]: https://github.com/googlesamples/androidtv-Leanback/blob/master/app/src/main/java/com/example/android/tvleanback/ui/OnboardingFragment.java
+[videoplayerglue]: https://github.com/rawitscher/chariot_media/blob/master/app/src/main/java/com/example/android/tvleanback/player/VideoPlayerGlue.java
 
-[settingsfragment]: https://github.com/googlesamples/androidtv-Leanback/blob/master/app/src/main/java/com/example/android/tvleanback/ui/SettingsFragment.java
+[errorfragment]: https://github.com/rawitscher/chariot_media/blob/master/app/src/main/java/com/example/android/tvleanback/ui/BrowseErrorFragment.java
 
-[videoplayerglue]: https://github.com/googlesamples/androidtv-Leanback/blob/master/app/src/main/java/com/example/android/tvleanback/player/VideoPlayerGlue.java
+[settingsfragment]: https://github.com/rawitscher/chariot_media/blob/master/app/src/main/java/com/example/android/tvleanback/ui/SettingsFragment.java
 
-[playbackfragment]: https://github.com/googlesamples/androidtv-Leanback/blob/master/app/src/main/java/com/example/android/tvleanback/ui/PlaybackFragment.java
 
 ## Additonal Resouroces
 
@@ -80,14 +74,8 @@ Need more information about getting started with Android TV? Check the [official
 
 ## Screenshots
 
-[![Screenshot](screenshots/atv-leanback-all.png)](https://raw.githubusercontent.com/googlesamples/androidtv-Leanback/master/screenshots/atv-leanback-all.png)
+[![Screenshot](screenshots/atv-leanback-all.png)](https://raw.githubusercontent.com/rawitscher/chariot_media/master/screenshots/atv-leanback-all.png)
 
-## Support
-
-If you need additional help, our community might be able to help.
-
-- Android TV Google+ Community: [https://g.co/androidtvdev](https://g.co/androidtvdev)
-- Stack Overflow: [http://stackoverflow.com/questions/tagged/android-tv](http://stackoverflow.com/questions/tagged/android-tv)
 
 ## Dependencies
 
@@ -97,9 +85,6 @@ If you use Android Studio as recommended, the following dependencies will **auto
 - Android SDK v17 leanback support library
 - Android SDK v7 recyclerview library
 
-## Contributing
-
-We love contributions! :smile: Please follow the steps in the [CONTRIBUTING guide][contributing] to get started. If you found a bug, please file it [here][bugs].
 
 ## License
 
@@ -108,6 +93,5 @@ Licensed under the Apache 2.0 license. See the [LICENSE file][license] for detai
 [store-apps]: https://play.google.com/store/apps/collection/promotion_3000e26_androidtv_apps_all
 [studio]: https://developer.android.com/tools/studio/index.html
 [getting-started]: https://developer.android.com/training/tv/start/start.html
-[bugs]: https://github.com/googlesamples/androidtv-Leanback/issues/new
-[contributing]: CONTRIBUTING.md
+[bugs]: https://github.com/rawitscher/chariot_media/issues/new
 [license]: LICENSE

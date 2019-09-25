@@ -42,7 +42,7 @@ import javax.net.ssl.HttpsURLConnection;
  */
 public class VideoDbBuilder {
     public static final String TAG_MEDIA = "videos";
-    public static final String TAG_GOOGLE_VIDEOS = "googlevideos";
+    public static final String TAG_CHARIOT_VIDEOS = "chariotvideos";
     public static final String TAG_CATEGORY = "category";
     public static final String TAG_STUDIO = "studio";
     public static final String TAG_SOURCES = "sources";
@@ -50,6 +50,8 @@ public class VideoDbBuilder {
     public static final String TAG_CARD_THUMB = "card";
     public static final String TAG_BACKGROUND = "background";
     public static final String TAG_TITLE = "title";
+    public static final String TAG_YEAR = "year";
+
 
     private static final String TAG = "VideoDbBuilder";
 
@@ -83,7 +85,7 @@ public class VideoDbBuilder {
      */
     public List<ContentValues> buildMedia(JSONObject jsonObj) throws JSONException {
 
-        JSONArray categoryArray = jsonObj.getJSONArray(TAG_GOOGLE_VIDEOS);
+        JSONArray categoryArray = jsonObj.getJSONArray(TAG_CHARIOT_VIDEOS);
         List<ContentValues> videosToInsert = new ArrayList<>();
 
         for (int i = 0; i < categoryArray.length(); i++) {
@@ -108,6 +110,8 @@ public class VideoDbBuilder {
                 String bgImageUrl = video.optString(TAG_BACKGROUND);
                 String cardImageUrl = video.optString(TAG_CARD_THUMB);
                 String studio = video.optString(TAG_STUDIO);
+                String year = video.optString(TAG_YEAR);
+
 
                 ContentValues videoValues = new ContentValues();
                 videoValues.put(VideoContract.VideoEntry.COLUMN_CATEGORY, categoryName);
@@ -117,12 +121,13 @@ public class VideoDbBuilder {
                 videoValues.put(VideoContract.VideoEntry.COLUMN_CARD_IMG, cardImageUrl);
                 videoValues.put(VideoContract.VideoEntry.COLUMN_BG_IMAGE_URL, bgImageUrl);
                 videoValues.put(VideoContract.VideoEntry.COLUMN_STUDIO, studio);
+                videoValues.put(VideoContract.VideoEntry.COLUMN_PRODUCTION_YEAR, year);
+
 
                 // Fixed defaults.
                 videoValues.put(VideoContract.VideoEntry.COLUMN_CONTENT_TYPE, "video/mp4");
                 videoValues.put(VideoContract.VideoEntry.COLUMN_IS_LIVE, false);
                 videoValues.put(VideoContract.VideoEntry.COLUMN_AUDIO_CHANNEL_CONFIG, "2.0");
-                videoValues.put(VideoContract.VideoEntry.COLUMN_PRODUCTION_YEAR, 2014);
                 videoValues.put(VideoContract.VideoEntry.COLUMN_DURATION, 0);
                 videoValues.put(VideoContract.VideoEntry.COLUMN_RATING_STYLE,
                         Rating.RATING_5_STARS);

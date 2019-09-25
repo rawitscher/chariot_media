@@ -44,6 +44,7 @@ import androidx.core.content.ContextCompat;
 import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -80,6 +81,7 @@ public class MainFragment extends BrowseSupportFragment
     private BackgroundManager mBackgroundManager;
     private LoaderManager mLoaderManager;
     private static final int CATEGORY_LOADER = 123; // Unique ID for Category Loader.
+    private static final String TAG = "MyActivity";
 
     // Maps a Loader Id to its CursorObjectAdapter.
     private Map<Integer, CursorObjectAdapter> mVideoCursorAdapters;
@@ -141,7 +143,7 @@ public class MainFragment extends BrowseSupportFragment
 
     private void setupUIElements() {
         setBadgeDrawable(
-                getActivity().getResources().getDrawable(R.drawable.videos_by_google_banner, null));
+                getActivity().getResources().getDrawable(R.drawable.chariot_media_banner, null));
         setTitle(getString(R.string.browse_title)); // Badge, when set, takes precedent over title
         setHeadersState(HEADERS_ENABLED);
         setHeadersTransitionOnBackEnabled(true);
@@ -236,6 +238,7 @@ public class MainFragment extends BrowseSupportFragment
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        Log.d(TAG, "ON LOAD FINISHED FUNCTION BEGAN");
         if (data != null && data.moveToFirst()) {
             final int loaderId = loader.getId();
 
@@ -298,13 +301,15 @@ public class MainFragment extends BrowseSupportFragment
             }
         } else {
             // Start an Intent to fetch the videos.
-            Intent serviceIntent = new Intent(getActivity(), FetchVideoService.class);
-            getActivity().startService(serviceIntent);
+            Log.d(TAG, "STARTING INTENT TO FETCH VIDEOS");
+            //Intent serviceIntent = new Intent(getActivity(), FetchVideoService.class);
+            //getActivity().startService(serviceIntent);
         }
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
+        Log.d(TAG, "STARTING ON LOADER RESET");
         int loaderId = loader.getId();
         if (loaderId != CATEGORY_LOADER) {
             mVideoCursorAdapters.get(loaderId).changeCursor(null);

@@ -16,8 +16,8 @@
 -->
 
 <resources>
-    <string name="app_name"><![CDATA[Videos by Google]]></string>
-    <string name="browse_title"><![CDATA[Videos by Google]]></string>
+    <string name="app_name"><![CDATA[Chariot Media]]></string>
+    <string name="browse_title"><![CDATA[Chariot Media]]></string>
     <string name="related_movies">Related Videos</string>
     <string name="vertical_grid_title"><![CDATA[Vertical Video Grid]]></string>
 
@@ -36,7 +36,6 @@
 
     <string name="search_results">Search results for \'%1$s\'</string>
     <string name="no_search_results">No search results found for \'%1$s\'</string>
-    <string name="catalog_url">https://storage.googleapis.com/android-tv/android_tv_videos_new.json</string>
 
     <!-- Error messages -->
 
@@ -122,4 +121,5 @@
     <string name="pref_key_login">pref_login</string>
     <string name="pref_title_login">Login</string>
     <string name="playback_tag">PLAYBACK_TAG</string>
+    <string name="catalog_url">https://young-sierra-63981.herokuapp.com/api?id=1Rf4dDcr5eRm9f8epLKxeKOHswgMWRXOzU1Idcdg9YlI&amp;sheet=3</string>
 </resources>

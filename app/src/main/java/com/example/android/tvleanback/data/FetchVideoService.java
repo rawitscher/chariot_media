@@ -18,6 +18,7 @@ package com.example.android.tvleanback.data;
 
 import android.app.IntentService;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
@@ -26,6 +27,7 @@ import com.example.android.tvleanback.R;
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.List;
 
 /**
@@ -44,6 +46,7 @@ public class FetchVideoService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent workIntent) {
+        Log.d(TAG, "STARTING INTENT TO FETCH VIDEOS");
         VideoDbBuilder builder = new VideoDbBuilder(getApplicationContext());
 
         try {

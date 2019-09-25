@@ -1,4 +1,4 @@
-# # Chariot Media Player using Android TV Leanback Support Library
+## Chariot Media Player using Android TV Leanback Support Library
 
 This is a media player app designed to run on an Android TV device, in our case the Nebula Capsule II by Anker. This app is meant to serve as a streaming-free media player with a user-friendly UI that complies with the UX guidelines of Android TV. App content is currently all sourced under Creative Commons license and provided to the app via user input into a Google Spreadsheet. Sheet content is converted into a JSON which the app takes as input along with direct links to all media files. Content is refreshed only when WiFi is suitable and all content is usable.
 

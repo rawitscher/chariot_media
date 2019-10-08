@@ -25,4 +25,6 @@
     <color name="default_background">#c8c8c8</color>
     <color name="icon_background">#4A4a4a</color>
     <color name="icon_alt_background">#32a6f4</color>
+    <color name="font_row">#000</color>
+    <color name="font_header">#cc2aff</color>
 </resources>

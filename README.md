@@ -74,7 +74,7 @@ Need more information about getting started with Android TV? Check the [official
 
 ## Screenshots
 
-[![Screenshot](screenshots/atv-leanback-all.png)](https://raw.githubusercontent.com/rawitscher/chariot_media/master/screenshots/atv-leanback-all.png)
+[![Screenshot](screenshots/chariot_all_screens.png)](https://raw.githubusercontent.com/rawitscher/chariot_media/master/screenshots/chariot_main_screen.png)
 
 
 ## Dependencies

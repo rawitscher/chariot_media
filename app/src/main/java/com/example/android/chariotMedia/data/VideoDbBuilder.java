@@ -17,7 +17,6 @@ package com.example.android.chariotMedia.data;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.media.Rating;
 import androidx.annotation.NonNull;
 import android.util.Log;
 
@@ -49,8 +48,6 @@ public class VideoDbBuilder {
     public static final String TAG_CARD_THUMB = "card";
     public static final String TAG_BACKGROUND = "background";
     public static final String TAG_TITLE = "title";
-    public static final String TAG_YEAR = "year";
-
 
     private static final String TAG = "VideoDbBuilder";
 
@@ -109,7 +106,7 @@ public class VideoDbBuilder {
                 String bgImageUrl = video.optString(TAG_BACKGROUND);
                 String cardImageUrl = video.optString(TAG_CARD_THUMB);
                 String studio = video.optString(TAG_STUDIO);
-                String year = video.optString(TAG_YEAR);
+                //String year = video.optString(TAG_YEAR);
 
 
                 ContentValues videoValues = new ContentValues();
@@ -120,22 +117,22 @@ public class VideoDbBuilder {
                 videoValues.put(VideoContract.VideoEntry.COLUMN_CARD_IMG, cardImageUrl);
                 videoValues.put(VideoContract.VideoEntry.COLUMN_BG_IMAGE_URL, bgImageUrl);
                 videoValues.put(VideoContract.VideoEntry.COLUMN_STUDIO, studio);
-                videoValues.put(VideoContract.VideoEntry.COLUMN_PRODUCTION_YEAR, year);
+                //videoValues.put(VideoContract.VideoEntry.COLUMN_PRODUCTION_YEAR, year);
 
 
                 // Fixed defaults.
                 videoValues.put(VideoContract.VideoEntry.COLUMN_CONTENT_TYPE, "video/mp4");
-                videoValues.put(VideoContract.VideoEntry.COLUMN_IS_LIVE, false);
+                //videoValues.put(VideoContract.VideoEntry.COLUMN_IS_LIVE, false);
                 videoValues.put(VideoContract.VideoEntry.COLUMN_AUDIO_CHANNEL_CONFIG, "2.0");
                 videoValues.put(VideoContract.VideoEntry.COLUMN_DURATION, 0);
-                videoValues.put(VideoContract.VideoEntry.COLUMN_RATING_STYLE,
-                        Rating.RATING_5_STARS);
-                videoValues.put(VideoContract.VideoEntry.COLUMN_RATING_SCORE, 3.5f);
+                //videoValues.put(VideoContract.VideoEntry.COLUMN_RATING_STYLE,
+                 //       Rating.RATING_5_STARS);
+                //videoValues.put(VideoContract.VideoEntry.COLUMN_RATING_SCORE, 3.5f);
                 if (mContext != null) {
-                    videoValues.put(VideoContract.VideoEntry.COLUMN_PURCHASE_PRICE,
-                            mContext.getResources().getString(R.string.buy_2));
-                    videoValues.put(VideoContract.VideoEntry.COLUMN_RENTAL_PRICE,
-                            mContext.getResources().getString(R.string.rent_2));
+                    //videoValues.put(VideoContract.VideoEntry.COLUMN_PURCHASE_PRICE,
+                     //       "1");
+                    //videoValues.put(VideoContract.VideoEntry.COLUMN_RENTAL_PRICE,
+                     //       "1");
                     videoValues.put(VideoContract.VideoEntry.COLUMN_ACTION,
                             mContext.getResources().getString(R.string.global_search));
                 }

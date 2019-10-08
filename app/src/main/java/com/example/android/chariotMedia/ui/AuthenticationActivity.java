@@ -16,32 +16,40 @@
 
 package com.example.android.chariotMedia.ui;
 
-import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.InputType;
+import android.util.Log;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
-import androidx.leanback.app.GuidedStepFragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.leanback.app.GuidedStepSupportFragment;
 import androidx.leanback.widget.GuidanceStylist;
 import androidx.leanback.widget.GuidedAction;
-import android.text.InputType;
-import android.widget.Toast;
 
 import com.example.android.chariotMedia.R;
 
 import java.util.List;
 
-public class AuthenticationActivity extends Activity {
-    private static final int CONTINUE = 2;
+public class AuthenticationActivity extends FragmentActivity {
+    private static final int USERNAME = 1;
+    private static final int PASSWORD = 2;
+    private static final int CONTINUE = 3;
+
+    public static CharSequence USERNAME_VALUE = "";
+    public static CharSequence PASSWORD_VALUE = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (null == savedInstanceState) {
-            GuidedStepFragment.addAsRoot(this, new FirstStepFragment(), android.R.id.content);
+            GuidedStepSupportFragment.addAsRoot(this, new FirstStepFragment(), android.R.id.content);
         }
     }
 
-    public static class FirstStepFragment extends GuidedStepFragment {
+    public static class FirstStepFragment extends GuidedStepSupportFragment {
         @Override
         public int onProvideTheme() {
             return R.style.Theme_Example_Leanback_GuidedStep_First;
@@ -58,18 +66,20 @@ public class AuthenticationActivity extends Activity {
 
         @Override
         public void onCreateActions(@NonNull List<GuidedAction> actions, Bundle savedInstanceState) {
-            GuidedAction enterUsername = new GuidedAction.Builder()
+            GuidedAction enterUsername = new GuidedAction.Builder(this.getActivity())
+                    .id(USERNAME)
                     .title(getString(R.string.pref_title_username))
                     .descriptionEditable(true)
                     .build();
-            GuidedAction enterPassword = new GuidedAction.Builder()
+            GuidedAction enterPassword = new GuidedAction.Builder(this.getActivity())
+                    .id(PASSWORD)
                     .title(getString(R.string.pref_title_password))
                     .descriptionEditable(true)
                     .descriptionInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD | InputType.TYPE_CLASS_TEXT)
                     .build();
-            GuidedAction login = new GuidedAction.Builder()
+            GuidedAction login = new GuidedAction.Builder(this.getActivity())
                     .id(CONTINUE)
-                    .title(getString(R.string.guidedstep_continue))
+                    .title(getString(R.string.authentication_step_continue))
                     .build();
             actions.add(enterUsername);
             actions.add(enterPassword);
@@ -78,11 +88,18 @@ public class AuthenticationActivity extends Activity {
 
         @Override
         public void onGuidedActionClicked(GuidedAction action) {
-            if (action.getId() == CONTINUE) {
-                // TODO Authenticate your account
-                // Assume the user was logged in
-                Toast.makeText(getActivity(), "Welcome!", Toast.LENGTH_SHORT).show();
-                getActivity().finishAfterTransition();
+            if (action.getId() == USERNAME) {
+                USERNAME_VALUE = action.getDescription();
+            } else if (action.getId() == PASSWORD) {
+                PASSWORD_VALUE = action.getDescription();
+            } else if (action.getId() == CONTINUE) {
+                Log.d(USERNAME_VALUE.toString(), "USER");
+                Log.d(PASSWORD_VALUE.toString(), "PWD");
+                // TODO Authenticate user account, currently blanket login is used
+                if(USERNAME_VALUE == "chariot" && PASSWORD_VALUE == "abc") {
+                    Toast.makeText(getActivity(), "Welcome!", Toast.LENGTH_SHORT).show();
+                    getActivity().finishAfterTransition();
+                }
             }
         }
     }

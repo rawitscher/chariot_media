@@ -65,7 +65,7 @@ public class OnboardingFragment extends OnboardingSupportFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Set the logo to display a splash animation
-        setLogoResourceId(R.drawable.chariot_media_banner);
+        setLogoResourceId(R.drawable.chariot_videos_by_banner);
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 

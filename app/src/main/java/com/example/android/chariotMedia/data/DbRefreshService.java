@@ -15,9 +15,8 @@ public class DbRefreshService extends JobIntentService {
 
     @Override
     protected void onHandleWork(@NonNull Intent intent) {
-        // your code
         Intent serviceIntent = new Intent(this, FetchVideoService.class);
-        this.startService(serviceIntent);
+        this.startForegroundService(serviceIntent);
     }
 
 }

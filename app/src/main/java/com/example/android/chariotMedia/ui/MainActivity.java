@@ -36,6 +36,8 @@ public class MainActivity extends LeanbackActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // TODO: Update media content
+
         setContentView(R.layout.main);
         getPermissionToAccessVideo();
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -75,3 +77,5 @@ public class MainActivity extends LeanbackActivity {
         }
     }
 }
+
+

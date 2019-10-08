@@ -18,13 +18,15 @@ package com.example.android.chariotMedia.presenter;
 
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.view.ViewGroup;
+
 import androidx.leanback.widget.ImageCardView;
 import androidx.leanback.widget.Presenter;
 import androidx.core.content.ContextCompat;
-import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+
 import com.example.android.chariotMedia.R;
 import com.example.android.chariotMedia.model.Video;
 
@@ -62,8 +64,6 @@ public class CardPresenter extends Presenter {
     private void updateCardBackgroundColor(ImageCardView view, boolean selected) {
         int color = selected ? mSelectedBackgroundColor : mDefaultBackgroundColor;
 
-        // Both background colors should be set because the view's
-        // background is temporarily visible during animations.
         view.setBackgroundColor(color);
         view.findViewById(R.id.info_field).setBackgroundColor(color);
     }

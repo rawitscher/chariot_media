@@ -64,7 +64,7 @@ public class VideoDbIntegrationTest {
         assertThat(mCursor.getCount()).isEqualTo(0); // Confirm database is empty
         mCursor.close();
         try {
-            mContext.startService(new Intent(mContext, FetchVideoService.class));
+            mContext.startForegroundService(new Intent(mContext, FetchVideoService.class));
             Thread.sleep(1000*30);
             mCursor = mVideoDbHelper.getReadableDatabase().query(
                     VideoContract.VideoEntry.TABLE_NAME,

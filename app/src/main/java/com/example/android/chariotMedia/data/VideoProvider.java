@@ -27,6 +27,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
+
 import androidx.annotation.NonNull;
 
 import java.util.HashMap;
@@ -71,15 +72,9 @@ public class VideoProvider extends ContentProvider {
                 VideoContract.VideoEntry.COLUMN_STUDIO,
                 VideoContract.VideoEntry.COLUMN_CARD_IMG,
                 VideoContract.VideoEntry.COLUMN_CONTENT_TYPE,
-                VideoContract.VideoEntry.COLUMN_IS_LIVE,
                 VideoContract.VideoEntry.COLUMN_VIDEO_WIDTH,
                 VideoContract.VideoEntry.COLUMN_VIDEO_HEIGHT,
                 VideoContract.VideoEntry.COLUMN_AUDIO_CHANNEL_CONFIG,
-                VideoContract.VideoEntry.COLUMN_PURCHASE_PRICE,
-                VideoContract.VideoEntry.COLUMN_RENTAL_PRICE,
-                VideoContract.VideoEntry.COLUMN_RATING_STYLE,
-                VideoContract.VideoEntry.COLUMN_RATING_SCORE,
-                VideoContract.VideoEntry.COLUMN_PRODUCTION_YEAR,
                 VideoContract.VideoEntry.COLUMN_DURATION,
                 VideoContract.VideoEntry.COLUMN_ACTION,
                 SearchManager.SUGGEST_COLUMN_INTENT_DATA_ID
@@ -128,23 +123,12 @@ public class VideoProvider extends ContentProvider {
         map.put(VideoContract.VideoEntry.COLUMN_STUDIO, VideoContract.VideoEntry.COLUMN_STUDIO);
         map.put(VideoContract.VideoEntry.COLUMN_CONTENT_TYPE,
                 VideoContract.VideoEntry.COLUMN_CONTENT_TYPE);
-        map.put(VideoContract.VideoEntry.COLUMN_IS_LIVE, VideoContract.VideoEntry.COLUMN_IS_LIVE);
         map.put(VideoContract.VideoEntry.COLUMN_VIDEO_WIDTH,
                 VideoContract.VideoEntry.COLUMN_VIDEO_WIDTH);
         map.put(VideoContract.VideoEntry.COLUMN_VIDEO_HEIGHT,
                 VideoContract.VideoEntry.COLUMN_VIDEO_HEIGHT);
         map.put(VideoContract.VideoEntry.COLUMN_AUDIO_CHANNEL_CONFIG,
                 VideoContract.VideoEntry.COLUMN_AUDIO_CHANNEL_CONFIG);
-        map.put(VideoContract.VideoEntry.COLUMN_PURCHASE_PRICE,
-                VideoContract.VideoEntry.COLUMN_PURCHASE_PRICE);
-        map.put(VideoContract.VideoEntry.COLUMN_RENTAL_PRICE,
-                VideoContract.VideoEntry.COLUMN_RENTAL_PRICE);
-        map.put(VideoContract.VideoEntry.COLUMN_RATING_STYLE,
-                VideoContract.VideoEntry.COLUMN_RATING_STYLE);
-        map.put(VideoContract.VideoEntry.COLUMN_RATING_SCORE,
-                VideoContract.VideoEntry.COLUMN_RATING_SCORE);
-        map.put(VideoContract.VideoEntry.COLUMN_PRODUCTION_YEAR,
-                VideoContract.VideoEntry.COLUMN_PRODUCTION_YEAR);
         map.put(VideoContract.VideoEntry.COLUMN_DURATION, VideoContract.VideoEntry.COLUMN_DURATION);
         map.put(VideoContract.VideoEntry.COLUMN_ACTION, VideoContract.VideoEntry.COLUMN_ACTION);
         map.put(SearchManager.SUGGEST_COLUMN_INTENT_DATA_ID, VideoContract.VideoEntry._ID + " AS " +

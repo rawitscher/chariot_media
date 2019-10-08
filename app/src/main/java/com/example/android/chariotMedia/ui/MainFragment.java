@@ -26,6 +26,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.core.app.ActivityOptionsCompat;
@@ -53,6 +54,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.example.android.chariotMedia.R;
+import com.example.android.chariotMedia.data.FetchVideoService;
 import com.example.android.chariotMedia.data.VideoContract;
 import com.example.android.chariotMedia.model.Video;
 import com.example.android.chariotMedia.model.VideoCursorMapper;
@@ -142,7 +144,7 @@ public class MainFragment extends BrowseSupportFragment
 
     private void setupUIElements() {
         setBadgeDrawable(
-                getActivity().getResources().getDrawable(R.drawable.chariot_media_banner, null));
+                getActivity().getResources().getDrawable(R.drawable.chariot_videos_by_banner, null));
         setTitle(getString(R.string.browse_title)); // Badge, when set, takes precedent over title
         setHeadersState(HEADERS_ENABLED);
         setHeadersTransitionOnBackEnabled(true);
@@ -200,7 +202,7 @@ public class MainFragment extends BrowseSupportFragment
 
     private void updateRecommendations() {
         Intent recommendationIntent = new Intent(getActivity(), UpdateRecommendationsService.class);
-        getActivity().startService(recommendationIntent);
+        getActivity().startForegroundService(recommendationIntent);
     }
 
     @Override
@@ -277,13 +279,10 @@ public class MainFragment extends BrowseSupportFragment
                     data.moveToNext();
                 }
 
-                // Create a row for this special case with more samples.
-                HeaderItem gridHeader = new HeaderItem(getString(R.string.more_samples));
+                // Create a row for the settings menu.
+                HeaderItem gridHeader = new HeaderItem(getString(R.string.settings));
                 GridItemPresenter gridPresenter = new GridItemPresenter(this);
                 ArrayObjectAdapter gridRowAdapter = new ArrayObjectAdapter(gridPresenter);
-                gridRowAdapter.add(getString(R.string.grid_view));
-                gridRowAdapter.add(getString(R.string.guidedstep_first_title));
-                gridRowAdapter.add(getString(R.string.error_fragment));
                 gridRowAdapter.add(getString(R.string.personal_settings));
                 ListRow row = new ListRow(gridHeader, gridRowAdapter);
                 mCategoryRowAdapter.add(row);
@@ -297,8 +296,8 @@ public class MainFragment extends BrowseSupportFragment
         } else {
             // Start an Intent to fetch the videos.
             Log.d(TAG, "STARTING INTENT TO FETCH VIDEOS");
-            //Intent serviceIntent = new Intent(getActivity(), FetchVideoService.class);
-            //getActivity().startService(serviceIntent);
+            Intent serviceIntent = new Intent(getActivity(), FetchVideoService.class);
+            getActivity().startForegroundService(serviceIntent);
         }
     }
 

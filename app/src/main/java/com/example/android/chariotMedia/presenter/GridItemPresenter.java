@@ -18,11 +18,12 @@ package com.example.android.chariotMedia.presenter;
 
 import android.content.res.Resources;
 import android.graphics.Color;
-import androidx.leanback.widget.Presenter;
-import androidx.core.content.ContextCompat;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.leanback.widget.Presenter;
+import androidx.core.content.ContextCompat;
 
 import com.example.android.chariotMedia.R;
 import com.example.android.chariotMedia.ui.MainFragment;
@@ -47,7 +48,7 @@ public class GridItemPresenter extends Presenter {
         view.setFocusableInTouchMode(true);
         view.setBackgroundColor(ContextCompat.getColor(parent.getContext(),
                 R.color.default_background));
-        view.setTextColor(Color.WHITE);
+        view.setTextColor(Color.BLACK);
         view.setGravity(Gravity.CENTER);
         return new ViewHolder(view);
     }

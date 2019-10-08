@@ -58,10 +58,12 @@ import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.trackselection.TrackSelection;
 import com.google.android.exoplayer2.trackselection.TrackSelector;
+import com.google.android.exoplayer2.ui.PlayerView;
 import com.google.android.exoplayer2.upstream.BandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
+
 
 import static com.example.android.chariotMedia.ui.PlaybackFragment.VideoLoaderCallbacks.RELATED_VIDEOS_LOADER;
 
@@ -140,13 +142,17 @@ public class PlaybackFragment extends VideoSupportFragment {
         }
     }
 
+    // Beginning of video setup classes //
+
     private void initializePlayer() {
-        BandwidthMeter bandwidthMeter = new DefaultBandwidthMeter();
+        //BandwidthMeter bandwidthMeter = new DefaultBandwidthMeter();
         TrackSelection.Factory videoTrackSelectionFactory =
-                new AdaptiveTrackSelection.Factory(bandwidthMeter);
+                new AdaptiveTrackSelection.Factory();
         mTrackSelector = new DefaultTrackSelector(videoTrackSelectionFactory);
 
         mPlayer = ExoPlayerFactory.newSimpleInstance(getActivity(), mTrackSelector);
+        //
+        //PlayerView.setPlayer(mPlayer);
         mPlayerAdapter = new LeanbackPlayerAdapter(getActivity(), mPlayer, UPDATE_DELAY);
         mPlaylistActionListener = new PlaylistActionListener(mPlaylist);
         mPlayerGlue = new VideoPlayerGlue(getActivity(), mPlayerAdapter, mPlaylistActionListener);
@@ -189,6 +195,8 @@ public class PlaybackFragment extends VideoSupportFragment {
 
         mPlayer.prepare(mediaSource);
     }
+
+    // End of video setup classes //
 
     private ArrayObjectAdapter initializeRelatedVideosRow() {
         /*

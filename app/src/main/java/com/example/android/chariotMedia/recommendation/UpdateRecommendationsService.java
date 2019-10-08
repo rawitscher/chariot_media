@@ -18,6 +18,7 @@ package com.example.android.chariotMedia.recommendation;
 
 import android.app.IntentService;
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
@@ -25,7 +26,10 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.preference.PreferenceManager;
+
+import androidx.core.app.NotificationCompat;
 import androidx.recommendation.app.ContentRecommendation;
 import android.util.Log;
 
@@ -61,6 +65,23 @@ public class UpdateRecommendationsService extends IntentService {
         if (mNotifManager == null) {
             mNotifManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         }
+
+        if (Build.VERSION.SDK_INT >= 26) {
+            String CHANNEL_ID = "main channel";
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID,
+                    "Channel human readable title",
+                    NotificationManager.IMPORTANCE_DEFAULT);
+
+            ((NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE)).createNotificationChannel(channel);
+
+            Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
+                    .setContentTitle("")
+                    .setContentText("").build();
+
+            startForeground(1, notification);
+        }
+
+
     }
 
     @Override
@@ -76,7 +97,7 @@ public class UpdateRecommendationsService extends IntentService {
         int cardWidth = res.getDimensionPixelSize(R.dimen.card_width);
         int cardHeight = res.getDimensionPixelSize(R.dimen.card_height);
         ContentRecommendation.Builder builder = new ContentRecommendation.Builder()
-                .setBadgeIcon(R.drawable.chariot_media_icon);
+                .setBadgeIcon(R.drawable.chariot_videos_by_icon);
 
         Cursor cursor = getContentResolver().query(
                 VideoContract.VideoEntry.CONTENT_URI,

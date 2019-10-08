@@ -28,7 +28,7 @@ import com.example.android.chariotMedia.data.VideoContract.VideoEntry;
 public class VideoDbHelper extends SQLiteOpenHelper {
 
     // Change this when you change the database schema.
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 5;
 
     // The name of our database.
     private static final String DATABASE_NAME = "leanback.db";
@@ -50,15 +50,9 @@ public class VideoDbHelper extends SQLiteOpenHelper {
                 VideoEntry.COLUMN_STUDIO + " TEXT NOT NULL, " +
                 VideoEntry.COLUMN_CARD_IMG + " TEXT NOT NULL, " +
                 VideoEntry.COLUMN_CONTENT_TYPE + " TEXT NOT NULL, " +
-                VideoEntry.COLUMN_IS_LIVE + " INTEGER DEFAULT 0, " +
                 VideoEntry.COLUMN_VIDEO_WIDTH + " INTEGER NOT NULL, " +
                 VideoEntry.COLUMN_VIDEO_HEIGHT + " INTEGER NOT NULL, " +
                 VideoEntry.COLUMN_AUDIO_CHANNEL_CONFIG + " TEXT NOT NULL, " +
-                VideoEntry.COLUMN_PURCHASE_PRICE + " TEXT NOT NULL, " +
-                VideoEntry.COLUMN_RENTAL_PRICE + " TEXT NOT NULL, " +
-                VideoEntry.COLUMN_RATING_STYLE + " TEXT NOT NULL, " +
-                VideoEntry.COLUMN_RATING_SCORE + " TEXT NOT NULL, " +
-                VideoEntry.COLUMN_PRODUCTION_YEAR + " TEXT NOT NULL, " +
                 VideoEntry.COLUMN_DURATION + " TEXT NOT NULL, " +
                 VideoEntry.COLUMN_ACTION + " TEXT NOT NULL " +
                 " );";

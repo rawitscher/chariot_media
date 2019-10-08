@@ -89,6 +89,7 @@ public class VideoPlayerGlue extends PlaybackTransportControlGlue<LeanbackPlayer
 
     @Override
     protected void onCreatePrimaryActions(ArrayObjectAdapter adapter) {
+        ////// **** IMPORTANT **** //////
         // Order matters, super.onCreatePrimaryActions() will create the play / pause action.
         // Will display as follows:
         // play/pause, previous, rewind, fast forward, next
@@ -165,6 +166,7 @@ public class VideoPlayerGlue extends PlaybackTransportControlGlue<LeanbackPlayer
     }
 
     /** Skips backwards 10 seconds. */
+    // Can be changed by modifying TEN_SECONDS value at start of class. Name should be modified accordingly
     public void rewind() {
         long newPosition = getCurrentPosition() - TEN_SECONDS;
         newPosition = (newPosition < 0) ? 0 : newPosition;
@@ -172,6 +174,7 @@ public class VideoPlayerGlue extends PlaybackTransportControlGlue<LeanbackPlayer
     }
 
     /** Skips forward 10 seconds. */
+    // Can be changed by modifying TEN_SECONDS value at start of class. Name should be modified accordingly
     public void fastForward() {
         if (getDuration() > -1) {
             long newPosition = getCurrentPosition() + TEN_SECONDS;

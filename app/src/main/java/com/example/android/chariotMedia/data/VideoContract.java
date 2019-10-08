@@ -28,7 +28,7 @@ import android.provider.BaseColumns;
 public final class VideoContract {
 
     // The name for the entire content provider.
-    public static final String CONTENT_AUTHORITY = "com.example.android.tvleanback";
+    public static final String CONTENT_AUTHORITY = "com.example.android.chariotMedia";
 
     // Base of all URIs that will be used to contact the content provider.
     public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
@@ -71,9 +71,6 @@ public final class VideoContract {
         // The content type of the video.
         public static final String COLUMN_CONTENT_TYPE = SearchManager.SUGGEST_COLUMN_CONTENT_TYPE;
 
-        // Whether the video is live or not.
-        public static final String COLUMN_IS_LIVE = SearchManager.SUGGEST_COLUMN_IS_LIVE;
-
         // The width of the video.
         public static final String COLUMN_VIDEO_WIDTH = SearchManager.SUGGEST_COLUMN_VIDEO_WIDTH;
 
@@ -82,21 +79,6 @@ public final class VideoContract {
 
         // The audio channel configuration.
         public static final String COLUMN_AUDIO_CHANNEL_CONFIG = SearchManager.SUGGEST_COLUMN_AUDIO_CHANNEL_CONFIG;
-
-        // The purchase price of the video.
-        public static final String COLUMN_PURCHASE_PRICE = SearchManager.SUGGEST_COLUMN_PURCHASE_PRICE;
-
-        // The rental price of the video.
-        public static final String COLUMN_RENTAL_PRICE = SearchManager.SUGGEST_COLUMN_RENTAL_PRICE;
-
-        // The rating style of the video.
-        public static final String COLUMN_RATING_STYLE = SearchManager.SUGGEST_COLUMN_RATING_STYLE;
-
-        // The score of the rating.
-        public static final String COLUMN_RATING_SCORE = SearchManager.SUGGEST_COLUMN_RATING_SCORE;
-
-        // The year the video was produced.
-        public static final String COLUMN_PRODUCTION_YEAR = SearchManager.SUGGEST_COLUMN_PRODUCTION_YEAR;
 
         // The duration of the video.
         public static final String COLUMN_DURATION = SearchManager.SUGGEST_COLUMN_DURATION;

@@ -18,15 +18,16 @@ package com.example.android.chariotMedia.presenter;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import androidx.leanback.widget.HeaderItem;
-import androidx.leanback.widget.ListRow;
-import androidx.leanback.widget.Presenter;
-import androidx.leanback.widget.RowHeaderPresenter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.leanback.widget.HeaderItem;
+import androidx.leanback.widget.ListRow;
+import androidx.leanback.widget.Presenter;
+import androidx.leanback.widget.RowHeaderPresenter;
 
 import com.example.android.chariotMedia.R;
 
@@ -53,21 +54,19 @@ public class IconHeaderItemPresenter extends RowHeaderPresenter {
         View rootView = viewHolder.view;
         rootView.setFocusable(true);
 
-        ImageView iconView = (ImageView) rootView.findViewById(R.id.header_icon);
+        ImageView iconView = rootView.findViewById(R.id.header_icon);
         Drawable icon = rootView.getResources().getDrawable(R.drawable.chariot_header, null);
         iconView.setImageDrawable(icon);
 
-        TextView label = (TextView) rootView.findViewById(R.id.header_label);
+        TextView label = rootView.findViewById(R.id.header_label);
         label.setText(headerItem.getName());
     }
 
     @Override
     public void onUnbindViewHolder(Presenter.ViewHolder viewHolder) {
-        // no op
+        // nothing to be done
     }
 
-    // TODO: This is a temporary fix. Remove me when leanback onCreateViewHolder no longer sets the
-    // mUnselectAlpha, and also assumes the xml inflation will return a RowHeaderView.
     @Override
     protected void onSelectLevelChanged(RowHeaderPresenter.ViewHolder holder) {
         holder.view.setAlpha(mUnselectedAlpha + holder.getSelectLevel() *

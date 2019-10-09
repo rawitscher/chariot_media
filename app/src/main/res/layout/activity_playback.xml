@@ -28,7 +28,7 @@
 
     <fragment
         android:id="@+id/playback_controls_fragment"
-        android:name="com.example.android.chariotMedia.ui.PlaybackFragment"
+        android:name="com.com.android.chariotMedia.ui.PlaybackFragment"
         android:tag="@string/playback_tag"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -22,7 +22,8 @@
         android:id="@+id/header_icon"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:contentDescription="@string/header_icon" />
+        android:contentDescription="@string/header_icon"
+        android:paddingHorizontal="4dp" />
 
     <TextView
         android:id="@+id/header_label"

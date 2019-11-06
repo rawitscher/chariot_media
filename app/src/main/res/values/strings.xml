@@ -76,4 +76,12 @@
     <string name="pref_title_login">Login</string>
     <string name="authentication_step_continue">Continue</string>
     <string name="playback_tag">PLAYBACK_TAG</string>
+    <string name="pref_title_background_images">Background Images</string>
+    <string name="pref_key_background_images">pref_background_images</string>
+    <string name="pref_title_name">Patient name</string>
+    <string name="pref_key_name">pref_name</string>
+    <string name="pref_info_settings">Custom Values</string>
+    <string name="pref_title_name_value">Enter patient name</string>
+    <string name="pref_key_name_value">pref_name_value</string>
+
 </resources>

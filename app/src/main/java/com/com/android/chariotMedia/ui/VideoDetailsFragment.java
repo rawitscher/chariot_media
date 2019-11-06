@@ -157,7 +157,7 @@ public class VideoDetailsFragment extends DetailsSupportFragment
     private void prepareBackgroundManager() {
         mBackgroundManager = BackgroundManager.getInstance(getActivity());
         mBackgroundManager.attach(getActivity().getWindow());
-        mDefaultBackground = getResources().getDrawable(R.drawable.default_background, null);
+        mDefaultBackground = getResources().getDrawable(R.drawable.defaultbackground, null);
         mMetrics = new DisplayMetrics();
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(mMetrics);
     }
@@ -325,7 +325,7 @@ public class VideoDetailsFragment extends DetailsSupportFragment
         final DetailsOverviewRow row = new DetailsOverviewRow(mSelectedVideo);
 
         RequestOptions options = new RequestOptions()
-                .error(R.drawable.default_background)
+                .error(R.drawable.defaultbackground)
                 .dontAnimate();
 
         Glide.with(this)

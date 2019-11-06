@@ -18,18 +18,26 @@ package com.com.android.chariotMedia.ui;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.ViewCompat;
 import androidx.leanback.app.BackgroundManager;
 import androidx.leanback.app.BrowseSupportFragment;
 import androidx.leanback.widget.ArrayObjectAdapter;
@@ -50,6 +58,8 @@ import androidx.loader.content.Loader;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.CustomTarget;
+import com.bumptech.glide.request.target.DrawableImageViewTarget;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.com.android.chariotMedia.BuildConfig;
@@ -65,6 +75,8 @@ import com.com.android.chariotMedia.recommendation.UpdateRecommendationsService;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import static androidx.core.view.ViewCompat.setBackground;
 
 /*
  * Main class to show BrowseFragment with header and rows of videos
@@ -136,13 +148,14 @@ public class MainFragment extends BrowseSupportFragment
     private void prepareBackgroundManager() {
         mBackgroundManager = BackgroundManager.getInstance(getActivity());
         mBackgroundManager.attach(getActivity().getWindow());
-        mDefaultBackground = getResources().getDrawable(R.drawable.default_background, null);
+        mDefaultBackground = ContextCompat.getDrawable(getActivity(),R.drawable.defaultbackground);
         mBackgroundTask = new UpdateBackgroundTask();
         mMetrics = new DisplayMetrics();
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(mMetrics);
     }
 
     private void setupUIElements() {
+        ViewCompat.setBackground(getView(), mDefaultBackground);
         setBadgeDrawable(
                 getActivity().getResources().getDrawable(R.drawable.chariot_videos_by_banner, null));
         setTitle(getString(R.string.browse_title)); // Badge, when set, takes precedent over title
@@ -174,6 +187,7 @@ public class MainFragment extends BrowseSupportFragment
     }
 
     private void updateBackground(String uri) {
+
         int width = mMetrics.widthPixels;
         int height = mMetrics.heightPixels;
 
@@ -193,6 +207,14 @@ public class MainFragment extends BrowseSupportFragment
                         mBackgroundManager.setBitmap(resource);
                     }
                 });
+    }
+
+    private void updateBackgroundtoDefault() {
+
+        Drawable[] layers = {ContextCompat.getDrawable(getActivity(),R.drawable
+                .backgroundlayer), mDefaultBackground};
+        LayerDrawable layerDrawable = new LayerDrawable(layers);
+        mBackgroundManager.setDrawable(layerDrawable);
     }
 
     private void startBackgroundTimer() {
@@ -316,6 +338,12 @@ public class MainFragment extends BrowseSupportFragment
 
         @Override
         public void run() {
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+            if (!sharedPreferences.getBoolean(getString(R.string.pref_key_background_images), false)) {
+                if (BuildConfig.DEBUG)Log.d(TAG, "Background images disabled");
+                updateBackgroundtoDefault();
+                return;
+            }
             if (mBackgroundURI != null) {
                 updateBackground(mBackgroundURI.toString());
             }
